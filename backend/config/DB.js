@@ -1,7 +1,7 @@
 const mysql = require("promise-mysql2");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const MAX_USERS_PER_COURSE = 4;
+const MAX_USERS_PER_COURSE = 22;
 
 require("dotenv").config();
 

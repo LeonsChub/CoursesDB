@@ -2,6 +2,7 @@ import { useFormik } from 'formik'
 import axios from 'axios'
 import { useState } from 'react'
 import { useAccess, useAccessUpdate } from '../../AccessContext'
+import { useNavigate } from 'react-router-dom'
 
 function ResetForm() {
   const [errors, setErrors] = useState({
@@ -18,24 +19,26 @@ function ResetForm() {
         old_password: values.oldPass,
         new_password: values.newPass1,
       })
-      .then((resp) => {
-        console.log(resp)
-      })
+      .then((resp) => {})
       .catch((err) => {
-        console.log(err)
         if (err['response'].status === 401) {
           setErrors((prev) => {
-            const oldState = prev
+            const oldState = { ...prev }
             oldState.invalidPass = 'Wrong password'
-
+            setTokenVal('EMPTY_TOKEN_NO_USER_LOGGED_IN')
+            navigate('/login')
             return oldState
           })
+        } else {
+          alert('Unkown Error Check console for detailes')
+          console.log(err)
         }
-        console.log(err)
       })
   }
 
   const tokenVal = useAccess()
+  const setTokenVal = useAccessUpdate()
+  const navigate = useNavigate()
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {

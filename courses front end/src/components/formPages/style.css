@@ -47,6 +47,8 @@ input:focus {
   color: red;
   margin-top: 0.2rem;
   margin-left: 0.2rem;
+
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 form.lim_w {

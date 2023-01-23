@@ -48,7 +48,7 @@ function SubjectItem({ subjectInfo }) {
                   postDataToServer(subjectInfo.subject)
                   navigate('/myCourses')
                 }}
-                className="signUpBtn"
+                className="signUpBtn prompted"
               >
                 You Sure?
               </button>

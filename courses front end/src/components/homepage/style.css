@@ -23,10 +23,13 @@ img {
 #fullSpanBanner > h2 {
   font-size: 1.75em;
   margin-bottom: 8px;
+  font-family: 'Sofia Sans', sans-serif;
 }
 #fullSpanBanner > p {
   font-size: 1.2em;
-
+  max-width: 25em;
+  margin-inline: auto;
+  font-family: 'Sofia Sans', sans-serif;
   font-weight: 300;
 }
 
@@ -50,7 +53,7 @@ img {
 .courseText {
   position: relative;
   text-align: center;
-  padding-top: 6px;
+  padding-block: 6px;
   width: 35%;
 
   border-top: 2px solid gray;
@@ -67,6 +70,8 @@ img {
 
   flex-direction: column;
   justify-content: center;
+
+  font-family: 'Sofia Sans', sans-serif;
 }
 
 .courseText > h3 {

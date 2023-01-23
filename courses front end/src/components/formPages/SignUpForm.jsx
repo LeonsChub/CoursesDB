@@ -2,6 +2,7 @@ import { useFormik } from 'formik'
 import axios from 'axios'
 import { useState } from 'react'
 import { useAccessUpdate } from '../../AccessContext'
+import { useNavigate } from 'react-router-dom'
 
 function SignUpForm() {
   const [errors, setErrors] = useState({
@@ -11,6 +12,7 @@ function SignUpForm() {
   })
 
   const setTokenVal = useAccessUpdate()
+  const navigate = useNavigate()
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -23,7 +25,7 @@ function SignUpForm() {
       setErrors(errors)
 
       if (!errors.name_error && !errors.pass_error && !errors.email_error) {
-        postDataToServer(values, setTokenVal, setErrors)
+        postDataToServer(values, setTokenVal, setErrors, () => navigate('/'))
       }
     },
   })
@@ -116,7 +118,7 @@ function renderError(error) {
   }
 }
 
-function postDataToServer(values, setTokenCb, errorCb) {
+function postDataToServer(values, setTokenCb, errorCb, navigateCB) {
   axios
     .post('http://localhost:3000/users/new-user', {
       email: values.email,
@@ -125,6 +127,7 @@ function postDataToServer(values, setTokenCb, errorCb) {
     })
     .then((resp) => {
       setTokenCb(resp['headers']['x-access-token'])
+      navigateCB()
     })
     .catch((err) => {
       if (err['response']['data']['error']['errno'] === 1062) {

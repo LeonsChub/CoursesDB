@@ -1,11 +1,12 @@
 import './navbar.css'
 import { Link } from 'react-router-dom'
 import { useAccess, useAccessUpdate } from '../../AccessContext'
-import jwt from 'jwt-decode'
-
+import { useNavigate } from 'react-router-dom'
 function Navbar() {
   const tokenVal = useAccess()
   const setTokenVal = useAccessUpdate()
+  const navigate = useNavigate()
+
   const unloggedBtns = () => {
     return (
       <>
@@ -25,6 +26,7 @@ function Navbar() {
         <button
           onClick={() => {
             setTokenVal('EMPTY_TOKEN_NO_USER_LOGGED_IN')
+            navigate('/')
           }}
         >
           Log-out

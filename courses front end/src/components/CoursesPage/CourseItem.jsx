@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import './style.css'
+import '../homepage/style.css'
 import axios from 'axios'
 import { useAccess } from '../../AccessContext'
 function CourseItem({ subjectInfo }) {
@@ -62,7 +62,7 @@ function CourseItem({ subjectInfo }) {
                   postDataToServer(subjectInfo.subject_id)
                   navigate('/')
                 }}
-                className="signUpBtn"
+                className="signUpBtn prompted"
               >
                 You Sure?
               </button>

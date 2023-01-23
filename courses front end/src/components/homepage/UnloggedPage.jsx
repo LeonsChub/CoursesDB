@@ -4,6 +4,7 @@ import pythonImg from '../../assets/Images/python.png'
 import javaImg from '../../assets/Images/java.png'
 import nodeImg from '../../assets/Images/node.png'
 import { Link } from 'react-router-dom'
+import './style.css'
 
 function UnloggedPage() {
   return (
